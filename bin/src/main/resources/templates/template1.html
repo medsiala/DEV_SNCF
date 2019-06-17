@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8"/>
+<title>SNCF RESEAU</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" type="text/css"
+ href="../static/css/mystyle.css"
+ th:href="@{/css/mystyle.css}"/> 
+</head>
+<body>
+<header></header>
+<div class="navbar navbar-default">
+	<div class="cont">
+	<ul class="nav navbar-nav">
+	<li><a th:href="@{/upload}">Import Excel</a></li>
+	</ul>
+
+</div>
+</div>
+<section layout:fragment="content"></section>
+<footer></footer>
+</body>
+</html>

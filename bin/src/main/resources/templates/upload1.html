@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<title>import Excel </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" type="text/css"
+ href="../static/css/mystyle.css"
+ th:href="@{/css/mystyle.css}"/> 
+</head>
+<body>
+
+<div layout:fragment="content">
+	<div class="col-md-6">
+	<div class="panel panel-primary">
+	<div class="panel-heading">Liste des Zeps SSud</div>
+	<div class="panel-body">
+	<form method="POST" enctype="multipart/form-data" id="fileUploadForm" action="upload/uploadfileSSUD">
+					<div class="form-group">
+						<label class="control-label" for="uploadfileSSUD">selectionnez un fichier:</label>
+						<input type="file" class="form-control" id="uploadfileSSUD" placeholder="Upload File"  name="uploadfileSSUD"></input>
+					</div>
+					<span class="icon text-white-50">
+					<button type="submit" class="btn btn-default" id="btnSubmit">Importer</button>
+					</span>
+				</form>
+				<div th:if="${messageS}">
+					<span th:text="${messageS}"/>
+					
+				</div></div>
+	</div>
+	</div>
+<div class="col-md-6"></div>
+<div layout:fragment="content">
+	<div class="col-md-6">
+	<div class="panel panel-primary">
+	<div class="panel-heading">Laplace Plan de charge Ressource</div>
+	<div class="panel-body">
+	<form method="POST" enctype="multipart/form-data" id="fileUploadForm" action="uploadLaplace">
+					<div class="form-group">
+						<label class="control-label" for="uploadLaplace">selectionnez un fichier:</label>
+						<input type="file" class="form-control" id="uploadLaplace" placeholder="Upload File"  name="uploadLaplace"></input>
+					</div>
+					
+					<button type="submit" class="btn btn-default" id="btnSubmit">Importer</button>
+				</form>
+				<div th:if="${message}">
+					<span th:text="${message}"/>
+					
+				</div></div>
+	</div>
+	</div>
+
+</div>
+</div>
+
+<div layout:fragment="content">
+	<div class="col-md-6">
+	<div class="panel panel-primary">
+	<div class="panel-heading">Liste des Zeps SNORD</div>
+	<div class="panel-body">
+	<form method="POST" enctype="multipart/form-data" id="fileUploadForm"  action="uploadfileSNORD">
+					<div class="form-group">
+						<label class="control-label" for="uploadfileSNORD">selectionnez un fichier:</label>
+						<input type="file" class="form-control" id="uploadfileSNORD" placeholder="Upload File"  name="uploadfileSNORD"></input>
+					</div>
+					
+					<button type="submit" class="btn btn-default" id="btnSubmit">Importer</button>
+				</form>
+				<div th:if="${messageN}">
+					<span th:text="${messageN}"/>
+				</div></div>
+	</div>
+	</div>
+<div class="col-md-6"></div>
+</div>
+
+</body>
+</html>
+
