@@ -123,32 +123,32 @@ public class ExcelUtilSSUD {
 			voieGCell.setCellType(Cell.CELL_TYPE_STRING);
 			zepSud.setVoieG(voieGCell.getStringCellValue());
 		}
-		Cell ligneACell= cells.get(13);
+		Cell ligneACell= cells.get(12);
 		if (ligneACell  !=null) {
 			ligneACell.setCellType(Cell.CELL_TYPE_NUMERIC);
 			zepSud.setLigneA(ligneACell .getNumericCellValue());
 		}
-		Cell ligneBCell= cells.get(14);
+		Cell ligneBCell= cells.get(13);
 		if (ligneBCell  !=null) {
 			ligneBCell.setCellType(Cell.CELL_TYPE_NUMERIC);
 			zepSud.setLigneB(ligneBCell .getNumericCellValue());
 		}
-		Cell ligneCCell= cells.get(15);
+		Cell ligneCCell= cells.get(14);
 		if (ligneCCell  !=null) {
 			ligneCCell.setCellType(Cell.CELL_TYPE_NUMERIC);
 			zepSud.setLigneC(ligneCCell .getNumericCellValue());
 		}
-		Cell secteurCell= cells.get(16);
+		Cell secteurCell= cells.get(15);
 		if (secteurCell !=null) {
 			secteurCell.setCellType(Cell.CELL_TYPE_STRING);
 			zepSud.setSecteur(secteurCell.getStringCellValue());
 		}
-		Cell ttxAutCell= cells.get(17);
+		Cell ttxAutCell= cells.get(16);
 		if (ttxAutCell !=null) {
 			ttxAutCell.setCellType(Cell.CELL_TYPE_STRING);
 			zepSud.setTtxAut(ttxAutCell.getStringCellValue());
 		}
-		Cell groupCell= cells.get(18);
+		Cell groupCell= cells.get(17);
 		if (groupCell !=null) {
 			groupCell.setCellType(Cell.CELL_TYPE_STRING);
 			zepSud.setGroupZep(groupCell.getStringCellValue());

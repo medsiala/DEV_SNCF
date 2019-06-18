@@ -25,6 +25,13 @@ private String libAct ;
 private String capacite ;
 private double pkDebut ;
 private double pkFin ;
+private double ligne;
+public double getLigne() {
+	return ligne;
+}
+public void setLigne(double ligne) {
+	this.ligne = ligne;
+}
 @Temporal(TemporalType.DATE)
 @DateTimeFormat(pattern = "dd/MM/yyyy")
 private Date dateDebut ;
@@ -36,7 +43,7 @@ private TrainsTravaux trainsTravaux;
 @OneToOne(mappedBy = "operation")
 private RPTX rptx ;*/
 public Operation(double idActivite, String strucResp, String libAct, String capacite, double pkDebut, double pkFin,
-		Date dateDebut, Date dateFin) {
+		Date dateDebut, Date dateFin,double ligne) {
 	super();
 	this.idActivites = idActivite;
 	this.strucResp = strucResp;
@@ -46,6 +53,7 @@ public Operation(double idActivite, String strucResp, String libAct, String capa
 	this.pkFin = pkFin;
 	this.dateDebut = dateDebut;
 	this.dateFin = dateFin;
+	this.ligne=ligne;
 }
 public double getIdActivites() {
 	return idActivites;

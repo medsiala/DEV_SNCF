@@ -28,9 +28,10 @@ public class FileLaplacePlanDeChargeController {
 	@GetMapping("/getAll")
 	@ResponseBody
 	public List<Object[]> selectact (@RequestParam Date dateNuit){
-	 
+	    
 		List<Object[]> laPlacePlanDeCharges ;
 		laPlacePlanDeCharges = fileLaplacePlanDeChargeServices.selectact(dateNuit) ; 
+		
 		
 		return laPlacePlanDeCharges ;
 		

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface LaplacePlanDeChargeRepository extends JpaRepository<LaplacePlanDeCharge, Long> {
-@Query("select DISTINCT idActivites,strucResp,libAct,capacite,pkDebut,pkFin,dateDebut,dateFin "
+@Query("select DISTINCT idActivites,strucResp,libAct,capacite,pkDebut,pkFin,dateDebut,dateFin,libLigne "
 		+ "FROM LaplacePlanDeCharge l "
 		+ "WHERE l.dateDebut <= ?1 AND l.dateFin >= ?1 "
 		+ "AND jourOuNuit='N' AND (l.strucResp='SECT DPX VOIE Cheval-Blanc'"

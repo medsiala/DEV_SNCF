@@ -69,8 +69,8 @@ public class ExcelUtilsCat {
 		}
 			Cell voie= cells.get(4);
 			if (voie != null) {
-				voie.setCellType(Cell.CELL_TYPE_NUMERIC);
-				cat.setCVoie(voie.getNumericCellValue());
+				voie.setCellType(Cell.CELL_TYPE_STRING);
+				cat.setCVoie(voie.getStringCellValue());
 		}
 			return cat ;
 }

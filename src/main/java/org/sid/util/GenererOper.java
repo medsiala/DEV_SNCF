@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.sid.entities.CREQ;
 import org.sid.entities.Operation;
+import org.sid.entities.OperationCat;
 import org.sid.entities.OperationZep;
 import org.sid.entities.RPTX;
 import org.sid.entities.TrainsTravaux;
@@ -45,6 +46,9 @@ public class GenererOper {
 			
 			Date dateFin=((Date) op[7]);
 			operation.setDateFin(dateFin);
+			
+			double ligne=((double) op[8]);
+			operation.setLigne(ligne);
 			
 			
 			operations.add(operation);
@@ -130,6 +134,23 @@ public class GenererOper {
 			
 			}
 		return listZepsOp;
+		}
+		public static List<OperationCat> findCat(List<Object[]> catOb,Operation op){
+			List<OperationCat> listCatOp=new ArrayList<OperationCat>();
+			int i=0;
+			while (i<catOb.size()) {
+				
+				OperationCat opCat1=new OperationCat();
+				Object[] catOb1=catOb.get(i);
+				String catOp=((String) catOb1[0]);
+				opCat1.setSectCat(catOp);
+				opCat1.setIdActivites(op.getIdActivites());
+				listCatOp.add(opCat1);
+				
+				
+				i++;
+			}
+			return listCatOp;
 		}
 		
 		

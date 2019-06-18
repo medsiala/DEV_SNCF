@@ -20,7 +20,7 @@ public class Catenaire implements Serializable {
 	private String CSecteurs ;
 	private double CPkDebut ;
 	private double CPkFin ;
-	private double CVoie ;
+	private String CVoie ;
 	public Long getId() {
 		return id;
 	}
@@ -45,14 +45,14 @@ public class Catenaire implements Serializable {
 	public void setCPkFin(double cPkFin) {
 		CPkFin = cPkFin;
 	}
-	public double getCVoie() {
+	public String getCVoie() {
 		return CVoie;
 	}
-	public void setCVoie(double cVoie) {
+	public void setCVoie(String cVoie) {
 		CVoie = cVoie;
 	}
 
-	public Catenaire(Long id, String cSecteurs, double cPkDebut, double cPkFin, double cVoie) {
+	public Catenaire(Long id, String cSecteurs, double cPkDebut, double cPkFin, String cVoie) {
 		super();
 		this.id = id;
 		CSecteurs = cSecteurs;

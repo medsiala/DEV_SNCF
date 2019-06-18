@@ -16,7 +16,9 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.sid.dao.CREQRepository;
+import org.sid.dao.CatenaireRepository;
 import org.sid.dao.LaplacePlanDeChargeRepository;
+import org.sid.dao.OperaCatRepository;
 import org.sid.dao.OperaZepRepository;
 import org.sid.dao.OperationRepository;
 import org.sid.dao.RPTXRepository;
@@ -25,6 +27,7 @@ import org.sid.dao.ZepRepository;
 import org.sid.entities.CREQ;
 import org.sid.entities.LaplacePlanDeCharge;
 import org.sid.entities.Operation;
+import org.sid.entities.OperationCat;
 import org.sid.entities.OperationZep;
 import org.sid.entities.RPTX;
 import org.sid.entities.TrainsTravaux;
@@ -55,6 +58,10 @@ public class FileLaplacePlanDeChargeServices {
 	ZepRepository zepRepository;
 	@Autowired
 	OperaZepRepository operaZepRepository;
+	@Autowired
+	OperaCatRepository operaCatRepository;
+	@Autowired
+	CatenaireRepository catenaireRepository;
 	// Store File Data to Database
 	public void storeLaplace(MultipartFile file){
 		
@@ -71,9 +78,17 @@ public class FileLaplacePlanDeChargeServices {
 	}
 	public void deletLaplace() {
 		 laplacePlanDeChargeRepository.deleteAll();
+		 }
+	public void deletOperation() {
+		 operaCatRepository.deleteAll();
+		 operationRepository.deleteAll();
+		 operaZepRepository.deleteAll();
+		 creqRepository.deleteAll();
+		 rptxRepository.deleteAll();
+		
 	}
 	public List<Object[]> selectact( Date dateNuit){ 
-		
+		deletOperation();
 		 List<Object[]> lap =laplacePlanDeChargeRepository.findLAplaceChargesByidActivites(dateNuit);
 		List<Operation> ops= GenererOper.SaveOper(lap);
 		operationRepository.saveAll(ops);
@@ -90,10 +105,17 @@ public class FileLaplacePlanDeChargeServices {
 		trainTravauxRepository.saveAll(ttx);
 		creqRepository.saveAll(creq);
 		for(Operation op:ops) { 
-		List<Object[]> zepob =zepRepository.findZEp(op.getPkDebut(), op.getPkFin());
+		List<Object[]> zepob =zepRepository.findZEp(op.getPkDebut(), op.getPkFin(),op.getLigne());
 	    List<OperationZep> zepOp=GenererOper.findZep(zepob, op);
 	    operaZepRepository.saveAll(zepOp);
+	    
 		}
+		List<Operation> opsCat= operationRepository.findOperaCat();
+		for(Operation op:opsCat) { 
+		    List<Object[]> catOb=catenaireRepository.findCat(op.getPkDebut() ,op.getPkFin());
+		    List<OperationCat> catOp=GenererOper.findCat(catOb, op);
+		    operaCatRepository.saveAll(catOp);
+			}
 		
 			
 		 return rptxs ;
