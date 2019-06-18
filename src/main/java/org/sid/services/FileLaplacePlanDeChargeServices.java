@@ -15,12 +15,19 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.sid.dao.CREQRepository;
 import org.sid.dao.LaplacePlanDeChargeRepository;
+import org.sid.dao.OperaZepRepository;
 import org.sid.dao.OperationRepository;
 import org.sid.dao.RPTXRepository;
+import org.sid.dao.TrainTravauxRepository;
+import org.sid.dao.ZepRepository;
+import org.sid.entities.CREQ;
 import org.sid.entities.LaplacePlanDeCharge;
 import org.sid.entities.Operation;
+import org.sid.entities.OperationZep;
 import org.sid.entities.RPTX;
+import org.sid.entities.TrainsTravaux;
 import org.sid.util.ExcelUtilsLaplacePlanDeCharge;
 import org.sid.util.GenererOper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +47,14 @@ public class FileLaplacePlanDeChargeServices {
 	OperationRepository operationRepository;
 	@Autowired
 	RPTXRepository rptxRepository ;
+	@Autowired
+	TrainTravauxRepository trainTravauxRepository;
+	@Autowired
+	CREQRepository creqRepository;
+	@Autowired
+	ZepRepository zepRepository;
+	@Autowired
+	OperaZepRepository operaZepRepository;
 	// Store File Data to Database
 	public void storeLaplace(MultipartFile file){
 		
@@ -59,43 +74,35 @@ public class FileLaplacePlanDeChargeServices {
 	}
 	public List<Object[]> selectact( Date dateNuit){ 
 		
-//		DateFormat df = new SimpleDateFormat("dd-MM-yyyy"); 
-//		Date date=null;
-//		try
-//		{
-//		  date= df.parse("23-04-2019");
 		 List<Object[]> lap =laplacePlanDeChargeRepository.findLAplaceChargesByidActivites(dateNuit);
 		List<Operation> ops= GenererOper.SaveOper(lap);
 		operationRepository.saveAll(ops);
 		List<Object[]> rptxs=laplacePlanDeChargeRepository.findLAplaceChargesByRPTX(dateNuit);
-		for(Operation op:ops) {
+		
 		List<RPTX> rptx=GenererOper.FindRptx(rptxs);
 		rptxRepository.saveAll(rptx);
+		List<Object[]> ttxob=laplacePlanDeChargeRepository.findLAplaceChargesByTTX(dateNuit);
+		List<Object[]> creqob=laplacePlanDeChargeRepository.findLAplaceChargesByCREQ(dateNuit);
 		
-		System.out.println();
+		
+		List<TrainsTravaux> ttx =GenererOper.findTTX(ttxob);
+		List<CREQ> creq =GenererOper.findCreq(creqob);
+		trainTravauxRepository.saveAll(ttx);
+		creqRepository.saveAll(creq);
+		for(Operation op:ops) { 
+		List<Object[]> zepob =zepRepository.findZEp(op.getPkDebut(), op.getPkFin());
+	    List<OperationZep> zepOp=GenererOper.findZep(zepob, op);
+	    operaZepRepository.saveAll(zepOp);
 		}
-		 return lap ;
-		 
-		/*List<LaplacePlanDeCharge> lapDist = lap.stream()
-				 							.filter(distinctByKey(LaplacePlanDeCharge::getIdActivites))
-				 							.collect(Collectors.toList());*/
-				 	 
-		 
-		//} catch (ParseException e){
-		//  e.printStackTrace();
-		//} 
-		 
 		
-		
-		
+			
+		 return rptxs ;
 		
 		
 	}
 	
-	public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
-	    Set<Object> seen = ConcurrentHashMap.newKeySet();
-	    return t -> seen.add(keyExtractor.apply(t));
-	}
+	
+
 	
 	public List<LaplacePlanDeCharge> getAll (){
 		return laplacePlanDeChargeRepository.findAll() ; 

@@ -5,9 +5,11 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-
+import org.sid.entities.CREQ;
 import org.sid.entities.Operation;
+import org.sid.entities.OperationZep;
 import org.sid.entities.RPTX;
+import org.sid.entities.TrainsTravaux;
 
 
 public class GenererOper {
@@ -73,4 +75,62 @@ public class GenererOper {
 			
 		   return listRptx;
 		}
-}
+		
+		public static List<TrainsTravaux> findTTX(List<Object[]> ttx){
+			List<TrainsTravaux> listTtxs =new ArrayList<TrainsTravaux>();
+			int i=0;
+			while (i<ttx.size()) {
+				TrainsTravaux ttx1=new TrainsTravaux();
+				Object[] ttxOb=ttx.get(i);
+				
+				String refTtx=((String) ttxOb[1]);
+				ttx1.setTtx(refTtx);
+				System.out.print(ttx1);
+				double id=((double) ttxOb[0]);
+				ttx1.setIdActivites(id);
+				
+				
+				listTtxs.add(ttx1);
+				i++;
+			}
+			return listTtxs;
+		}
+		public static List<CREQ> findCreq(List<Object[]> creq){
+			List<CREQ> listCREQ =new ArrayList<CREQ>();
+			int i=0;
+			while (i<creq.size()) {
+				CREQ creq1=new CREQ();
+				Object[] ttxOb=creq.get(i);
+				String conducteur=((String) ttxOb[1]);
+				creq1.setConducteur(conducteur);
+			
+				
+				double id=((double) ttxOb[0]);
+				creq1.setIdActivites(id);
+				
+				listCREQ.add(creq1);
+				i++;
+			}
+			return listCREQ;
+		}
+		public static List<OperationZep> findZep(List<Object[]> zepOb,Operation op){
+		List<OperationZep> listZepsOp =new ArrayList<OperationZep>();
+		int i=0 ;
+		
+			
+			while(i<zepOb.size()) {
+				OperationZep opZep1=new OperationZep();
+				Object[] zepOb1=zepOb.get(i);
+				String zepOp=((String) zepOb1[0]);
+				opZep1.setZep(zepOp);
+			    opZep1.setIdActivites(op.getIdActivites());
+			    listZepsOp.add(opZep1);
+			    i++;
+			    
+			
+			}
+		return listZepsOp;
+		}
+		
+		
+		}

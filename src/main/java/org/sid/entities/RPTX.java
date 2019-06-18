@@ -13,16 +13,10 @@ import javax.persistence.OneToOne;
 @Entity
 public class RPTX implements Serializable {
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id ;
-	private String rptx ;
 	private double idActivites;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private String rptx ;
+
+	
 	public String getRptx() {
 		return rptx;
 	}
@@ -35,9 +29,9 @@ public class RPTX implements Serializable {
 	public void setIdActivites(double idActivites) {
 		this.idActivites = idActivites;
 	}
-	public RPTX(Long id, String rptx, double idActivites) {
+	public RPTX(double idActivites, String rptx) {
 		super();
-		this.id = id;
+		
 		this.rptx = rptx;
 		this.idActivites = idActivites;
 	}

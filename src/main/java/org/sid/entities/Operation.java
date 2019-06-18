@@ -11,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Operation implements Serializable {
 @Id
@@ -21,7 +25,11 @@ private String libAct ;
 private String capacite ;
 private double pkDebut ;
 private double pkFin ;
+@Temporal(TemporalType.DATE)
+@DateTimeFormat(pattern = "dd/MM/yyyy")
 private Date dateDebut ;
+@Temporal(TemporalType.DATE)
+@DateTimeFormat(pattern = "dd/MM/yyyy")
 private Date dateFin ;
 /*@OneToOne(mappedBy = "operation")
 private TrainsTravaux trainsTravaux;

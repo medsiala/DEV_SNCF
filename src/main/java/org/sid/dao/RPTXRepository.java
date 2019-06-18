@@ -4,6 +4,6 @@ import org.sid.entities.RPTX;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.binding.QuerydslPredicate;
 
-public interface RPTXRepository extends JpaRepository<RPTX, Long> {
+public interface RPTXRepository extends JpaRepository<RPTX, Double> {
 
 }
