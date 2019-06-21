@@ -116,9 +116,9 @@ public class FileLaplacePlanDeChargeServices {
 		    List<OperationCat> catOp=GenererOper.findCat(catOb, op);
 		    operaCatRepository.saveAll(catOp);
 			}
-		
+		List<Object[]> aht =operationRepository.AHT();
 			
-		 return rptxs ;
+		 return aht ;
 		
 		
 	}

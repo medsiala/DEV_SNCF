@@ -20,8 +20,11 @@ public class Operation implements Serializable {
 @Id
 @Column(name = "opid")
 private double idActivites ;
+@Column(length = 1024)
 private String strucResp ;
+@Column(length = 1024)
 private String libAct ;
+@Column(length = 1024)
 private String capacite ;
 private double pkDebut ;
 private double pkFin ;

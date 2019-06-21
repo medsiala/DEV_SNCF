@@ -2,6 +2,7 @@ package org.sid.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class OperationZep implements Serializable {
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Long id ;
 private double idActivites ;
+@Column(length = 1024)
 private String zep ;
 public Long getId() {
 	return id;

@@ -19,11 +19,16 @@ public class LaplacePlanDeCharge implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id ;
 	private double idActivites ;
+	@Column(length = 1024)
 	private String strucResp ;
+	@Column(length = 1024)
 	private String libAct ;
+	@Column(length = 1024)
 	private String jourOuNuit ;
+	@Column(length = 1024)
 	private String capacite ;
 	private double libLigne ;
+	@Column(length = 1024)
 	private String libelleVoie ;
 	private double pkDebut ;
 	private double pkFin ;
@@ -33,8 +38,11 @@ public class LaplacePlanDeCharge implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateFin ;
+	@Column(length = 1024)
 	private String typeResou ;
+	@Column(length = 1024)
 	private String habilitation ;
+	@Column(length = 1024)
 	private String resouAffecte;
 	public Long getId() {
 		return id;

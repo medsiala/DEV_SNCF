@@ -25,24 +25,34 @@ public abstract class Zep implements Serializable  {
 	private double pkdebut ;
 	
 	private double pkfin ;
+	@Column(length = 1024)
 	
 	private String poste ;
+	@Column(length = 1024)
 	
 	private String numPoste ;
+	@Column(length = 1024)
 	
 	private String voieA ;
+	@Column(length = 1024)
 	
 	private String voieB ;
+	@Column(length = 1024)
 	
 	private String voieC ;
+	@Column(length = 1024)
 	
 	private String voieD ;
+	@Column(length = 1024)
 	
 	private String voieE ;
+	@Column(length = 1024)
 	
 	private String voieF ;
+	@Column(length = 1024)
 	
 	private String voieG ;
+	
 	
 	private double ligneA ;
 	

@@ -102,13 +102,13 @@ public class ExcelUtilsLaplacePlanDeCharge {
 		Cell pkDebutCell= cells.get(10);
 		if (pkDebutCell != null) {
 			pkDebutCell.setCellType(Cell.CELL_TYPE_NUMERIC);
-			lap.setPkDebut(pkDebutCell.getNumericCellValue());
+			lap.setPkDebut(arrondiNDecimales(pkDebutCell.getNumericCellValue(),3));
 		}
 		
 		Cell pkFinCell= cells.get(11);
 		if (pkFinCell != null) {
 			pkFinCell.setCellType(Cell.CELL_TYPE_NUMERIC);
-			lap.setPkFin(pkFinCell.getNumericCellValue());
+			lap.setPkFin(arrondiNDecimales(pkFinCell.getNumericCellValue(),3));
 		}
 		
 		Cell dateDebutCell= cells.get(13);
@@ -160,7 +160,7 @@ public class ExcelUtilsLaplacePlanDeCharge {
 		
 	}
 
-	
+	private static double arrondiNDecimales(double x, int n) { double pow = Math.pow(10, n); return (Math.floor(x * pow)) / pow; }
 
 	}
 	

@@ -19,7 +19,7 @@ public class UploadFileControllerLaplace {
     
     @PostMapping("uploadLaplace")
     public String uploadLaplace(@RequestParam("uploadLaplace") MultipartFile file, Model model) {
-    	fileLaplacePlanDeChargeServices.deletLaplace();
+    	
 		try {
 			fileLaplacePlanDeChargeServices.storeLaplace(file);
 			 

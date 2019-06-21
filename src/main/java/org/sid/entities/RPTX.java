@@ -2,6 +2,7 @@ package org.sid.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.OneToOne;
 public class RPTX implements Serializable {
 	@Id 
 	private double idActivites;
+	@Column(length = 1024)
 	private String rptx ;
 
 	
