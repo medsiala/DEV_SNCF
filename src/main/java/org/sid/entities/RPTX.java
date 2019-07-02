@@ -2,6 +2,7 @@ package org.sid.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,9 +15,12 @@ import javax.persistence.OneToOne;
 @Entity
 public class RPTX implements Serializable {
 	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long id ;
 	private double idActivites;
 	@Column(length = 1024)
 	private String rptx ;
+	
 
 	
 	public String getRptx() {
