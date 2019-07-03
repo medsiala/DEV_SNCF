@@ -20,7 +20,7 @@ public interface OperationRepository extends JpaRepository<Operation,Long> {
 			"	on  operation.opid = creq.id_activites" ,nativeQuery = true)
 	public List<Object[]> AHT();
 
-	
+	public List<Operation> findAllByOrderByLigneAsc();
 	
 	
 }

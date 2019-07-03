@@ -50,7 +50,7 @@ public class TableauProgController {
 	
 	@GetMapping("/getAllOps")
 	public Iterable<Operation> getOpe(){
-		return operationReposotory.findAll();
+		return operationReposotory.findAllByOrderByLigneAsc();
 	}
 	
 	@PostMapping("/ops")
