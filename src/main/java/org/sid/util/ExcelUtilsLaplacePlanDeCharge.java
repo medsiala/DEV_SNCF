@@ -97,6 +97,7 @@ public class ExcelUtilsLaplacePlanDeCharge {
 		if (voieCell != null) {
 			voieCell.setCellType(Cell.CELL_TYPE_STRING);
 			lap.setLibelleVoie(voieCell.getStringCellValue());
+			
 		}
 		
 		Cell pkDebutCell= cells.get(10);
@@ -136,6 +137,12 @@ public class ExcelUtilsLaplacePlanDeCharge {
 		            e.printStackTrace();
 		        }
 		}
+		Cell commCell=cells.get(15);
+		if (commCell != null) {
+			commCell.setCellType(Cell.CELL_TYPE_STRING);
+			lap.setCom(commCell.getStringCellValue());
+		}
+		
 		
 		Cell resourceCell=cells.get(16);
 		if (resourceCell != null) {

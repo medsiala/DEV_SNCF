@@ -16,6 +16,10 @@ private Long id ;
 private double idActivites ;
 @Column(length = 1024)
 private String zep ;
+private double pkdebut;
+private double pkfin ;
+private double minPk ;
+
 public Long getId() {
 	return id;
 }
@@ -34,15 +38,39 @@ public String getZep() {
 public void setZep(String zep) {
 	this.zep = zep;
 }
-public OperationZep() {
-	super();
-	// TODO Auto-generated constructor stub
+
+public double getPkdebut() {
+	return pkdebut;
 }
-public OperationZep(Long id, double idActivites, String zep) {
+public void setPkdebut(double pkdebut) {
+	this.pkdebut = pkdebut;
+}
+public double getPkfin() {
+	return pkfin;
+}
+public void setPkfin(double pkfin) {
+	this.pkfin = pkfin;
+}
+
+public double getMinPk() {
+	return minPk;
+}
+public void setMinPk(double minPk) {
+	this.minPk = minPk;
+}
+
+public OperationZep(Long id, double idActivites, String zep, double pkdebut, double pkfin, double minPk) {
 	super();
 	this.id = id;
 	this.idActivites = idActivites;
 	this.zep = zep;
+	this.pkdebut = pkdebut;
+	this.pkfin = pkfin;
+	this.minPk = minPk;
+}
+public OperationZep() {
+	super();
+	// TODO Auto-generated constructor stub
 }
 
 }

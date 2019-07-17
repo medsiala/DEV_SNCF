@@ -35,6 +35,7 @@ private String capacite ;
 private double pkDebut ;
 private double pkFin ;
 private double ligne;
+private String libelleVoie;
 
 @Temporal(TemporalType.DATE)
 @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -42,8 +43,9 @@ private Date dateDebut ;
 @Temporal(TemporalType.DATE)
 @DateTimeFormat(pattern = "dd/MM/yyyy")
 private Date dateFin ;
-@OneToOne(cascade=CascadeType.ALL)
-private RPTX rptx ;
+@Column(length = 1024)
+private String com ;
+
 public Long getId() {
 	return id;
 }
@@ -104,14 +106,9 @@ public Date getDateFin() {
 public void setDateFin(Date dateFin) {
 	this.dateFin = dateFin;
 }
-public RPTX getRptx() {
-	return rptx;
-}
-public void setRptx(RPTX rptx) {
-	this.rptx = rptx;
-}
+
 public Operation(Long id, double idActivites, String strucResp, String libAct, String capacite, double pkDebut,
-		double pkFin, double ligne, Date dateDebut, Date dateFin, RPTX rptx) {
+		double pkFin, double ligne, String libelleVoie, Date dateDebut, Date dateFin, String com) {
 	super();
 	this.id = id;
 	this.idActivites = idActivites;
@@ -121,9 +118,22 @@ public Operation(Long id, double idActivites, String strucResp, String libAct, S
 	this.pkDebut = pkDebut;
 	this.pkFin = pkFin;
 	this.ligne = ligne;
+	this.libelleVoie = libelleVoie;
 	this.dateDebut = dateDebut;
 	this.dateFin = dateFin;
-	this.rptx = rptx;
+	this.com = com;
+}
+public String getLibelleVoie() {
+	return libelleVoie;
+}
+public void setLibelleVoie(String libelleVoie) {
+	this.libelleVoie = libelleVoie;
+}
+public String getCom() {
+	return com;
+}
+public void setCom(String com) {
+	this.com = com;
 }
 public Operation() {
 	super();

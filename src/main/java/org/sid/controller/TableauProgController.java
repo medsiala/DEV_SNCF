@@ -2,12 +2,17 @@ package org.sid.controller;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
+import org.sid.dao.InterfaceTableRepository;
+import org.sid.dao.OperaZepRepository;
 import org.sid.dao.OperationRepository;
-import org.sid.entities.Operation;
+import org.sid.dao.ZepRepository;
+import org.sid.entities.InterfaceTable;
+import org.sid.entities.OperationZep;
+import org.sid.entities.Zep;
 import org.sid.services.FileLaplacePlanDeChargeServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,52 +26,61 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("http://localhost:4200")
 @RestController 
 public class TableauProgController {
-
-	  
+	
+	
 	@Autowired 
 	FileLaplacePlanDeChargeServices fileLaplacePlanDeChargeServices ; 
-	
+	@Autowired 
 	OperationRepository operationReposotory ;
-	
+	@Autowired 
+	InterfaceTableRepository interfaceTableRepository;
+	@Autowired 
+	ZepRepository zepRepository;
+	@Autowired 
+	OperaZepRepository operaZepRepository;
 	
 	public TableauProgController(OperationRepository operationReposotory) {
 		super();
 		this.operationReposotory = operationReposotory;
 	}
-
-
+	
+	
 	@GetMapping("/getAll")
 	@ResponseBody
-	public List<Object[]> selectact (@RequestParam Date dateNuit){
-	    
-		List<Object[]> laPlacePlanDeCharges ;
-		laPlacePlanDeCharges = fileLaplacePlanDeChargeServices.selectact(dateNuit) ; 
-		
-		
-		return laPlacePlanDeCharges ;
+	public void selectact (){
+	
+		fileLaplacePlanDeChargeServices.selectact() ; 
 		
 	}
 	
 	
-	@GetMapping("/getAllOps")
-	public Iterable<Operation> getOpe(){
-		return operationReposotory.findAllByOrderByLigneAsc();
+	
+	@GetMapping("/getAllOps{date}")
+	public Iterable<InterfaceTable> afficheAht(@RequestParam Date date){
+		List<InterfaceTable> interfaceTables;
+		interfaceTables=interfaceTableRepository.afficheAHT(date);
+		return interfaceTables;
 	}
 	
 	@PostMapping("/ops")
-	public Operation saveOp(@RequestBody Operation operation) {
-		return operationReposotory.save(operation);
+	public InterfaceTable saveOp(@RequestBody InterfaceTable interfaceTable) {
+		return interfaceTableRepository.save(interfaceTable);
 	}
 	
-	@GetMapping("/saveOp")
-	public Optional<Operation> getOp(@RequestParam(value = "id") Long id) {
-		return operationReposotory.findById(id);
-	}
+
 	
 	@DeleteMapping("/deleteOp/{id}")
-	public boolean deleteOp(@PathVariable("id") Long id) {
-		operationReposotory.deleteById(id);
-		return true;
+	public  void deleteOp(@PathVariable("id") Long id) {
+		interfaceTableRepository.deleteById(id);
+		
+	}
+	@GetMapping("/getAllZEpSud")
+	public Iterable<Zep> getZepSud(){
+		return zepRepository.findAll();
+	}
+	@GetMapping("/getopZEp")
+	public Iterable<OperationZep> getOpZep(){
+		return operaZepRepository.findAll();
 	}
 	
 	

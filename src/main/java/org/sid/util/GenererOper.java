@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.sid.entities.CREQ;
+import org.sid.entities.InterfaceTable;
 import org.sid.entities.Operation;
 import org.sid.entities.OperationCat;
 import org.sid.entities.OperationZep;
@@ -49,6 +50,12 @@ public class GenererOper {
 			
 			double ligne=((double) op[8]);
 			operation.setLigne(ligne);
+			
+			String com=((String) op[9]);
+			operation.setCom(com);
+			
+			String libelleVoie=((String)op[10]);
+			operation.setLibelleVoie(libelleVoie);
 			
 			
 			operations.add(operation);
@@ -127,7 +134,13 @@ public class GenererOper {
 				Object[] zepOb1=zepOb.get(i);
 				String zepOp=((String) zepOb1[0]);
 				opZep1.setZep(zepOp);
+				double pkdebut=((double) zepOb1[1]);
+				opZep1.setPkdebut(pkdebut);
+				double pkfin=((double) zepOb1[2]);
+				opZep1.setPkfin(pkfin);
+				opZep1.setMinPk(pkfin-pkdebut);
 			    opZep1.setIdActivites(op.getIdActivites());
+			    
 			    listZepsOp.add(opZep1);
 			    i++;
 			    
@@ -152,6 +165,62 @@ public class GenererOper {
 			}
 			return listCatOp;
 		}
-		
-		
+		public static List<InterfaceTable> AffTable(List<Object[]> tabs){
+			List<InterfaceTable> interfaceTables =new ArrayList<InterfaceTable>();
+			int i=0;
+			while(i<tabs.size()) {
+				
+				InterfaceTable interfaceTable =new InterfaceTable();
+				Object[] tab=tabs.get(i);
+				
+				
+				
+				String libAct=((String) tab[0]);
+				interfaceTable.setNatureTravaux(libAct);
+				
+				String strucResp=((String) tab[1]);
+				interfaceTable.setStrucResp(strucResp);
+				
+				String rptx=((String) tab[2]);
+				interfaceTable.setRptx(rptx);
+				
+				double pkDebutZch=((double) tab[3]);
+				interfaceTable.setPkDebutZch(pkDebutZch);
+				
+				double pkFinZch=((double) tab[4]);
+				interfaceTable.setPkFinZch(pkFinZch);
+				
+				String ttx=((String) tab[5]);
+				interfaceTable.setTtx(ttx);
+				
+				String creq=((String) tab[6]);
+				interfaceTable.setCreq(creq);		
+				
+				String zepProp=((String) tab[7]);
+				interfaceTable.setZepProp(zepProp);
+				
+				String com=((String)tab[8]);
+				interfaceTable.setCom(com);
+				
+				Date dateDebut=((Date)tab[9]);
+				interfaceTable.setDateDebut(dateDebut);
+				
+				Date dateFin=((Date)tab[10]);
+				interfaceTable.setDatFin(dateFin);
+				
+				interfaceTables.add(interfaceTable);
+				i++;
+			}
+			
+			return interfaceTables;
+			
+
+			}
+	
+			
+			
 		}
+	
+		
+		
+		

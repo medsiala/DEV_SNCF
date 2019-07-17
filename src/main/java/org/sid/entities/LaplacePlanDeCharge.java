@@ -44,6 +44,17 @@ public class LaplacePlanDeCharge implements Serializable {
 	private String habilitation ;
 	@Column(length = 1024)
 	private String resouAffecte;
+	@Column(length = 1024)
+	private String com ;
+	
+	
+	
+	public String getCom() {
+		return com;
+	}
+	public void setCom(String com) {
+		this.com = com;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -137,7 +148,7 @@ public class LaplacePlanDeCharge implements Serializable {
 	}
 	public LaplacePlanDeCharge(Long id, double idActivites, String strucResp, String libAct, String jourOuNuit,
 			String capacite, double libLigne, String libelleVoie, double pkDebut, double pkFin, Date dateDebut,
-			Date dateFin, String typeResou, String habilitation, String resouAffecte) {
+			Date dateFin, String typeResou, String habilitation, String resouAffecte, String com) {
 		super();
 		this.id = id;
 		this.idActivites = idActivites;
@@ -154,6 +165,7 @@ public class LaplacePlanDeCharge implements Serializable {
 		this.typeResou = typeResou;
 		this.habilitation = habilitation;
 		this.resouAffecte = resouAffecte;
+		this.com = com;
 	}
 	public LaplacePlanDeCharge() {
 		super();
@@ -165,9 +177,8 @@ public class LaplacePlanDeCharge implements Serializable {
 				+ ", libAct=" + libAct + ", jourOuNuit=" + jourOuNuit + ", capacite=" + capacite + ", libLigne="
 				+ libLigne + ", libelleVoie=" + libelleVoie + ", pkDebut=" + pkDebut + ", pkFin=" + pkFin
 				+ ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", typeResou=" + typeResou + ", habilitation="
-				+ habilitation + ", resouAffecte=" + resouAffecte + "]";
+				+ habilitation + ", resouAffecte=" + resouAffecte + ", com=" + com + "]";
 	}
-	
 	
 	
 }
