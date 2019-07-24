@@ -3,6 +3,7 @@ package org.sid.controller;
 import java.util.List;
 
 import org.sid.entities.LaplacePlanDeCharge;
+import org.sid.services.FileCatServices;
 import org.sid.services.FileLaplacePlanDeChargeServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadFileControllerLaplace {
 	@Autowired
 	FileLaplacePlanDeChargeServices fileLaplacePlanDeChargeServices ;
-    
+	@Autowired
+	FileCatServices catServices;
     @PostMapping("uploadLaplace")
     public String uploadLaplace(@RequestParam("uploadLaplace") MultipartFile file, Model model) {
     	
@@ -24,6 +26,7 @@ public class UploadFileControllerLaplace {
 			fileLaplacePlanDeChargeServices.storeLaplace(file);
 			 
 			model.addAttribute("message", "Importation réussie");
+			catServices.selectSecCat();
 		} catch (Exception e) {
 			model.addAttribute("message", "Importation Échouée ! -> Nom du fichier: " + file.getOriginalFilename());
 		}

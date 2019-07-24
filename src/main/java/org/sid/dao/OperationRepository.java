@@ -13,7 +13,7 @@ public interface OperationRepository extends JpaRepository<Operation,Long> {
 	@Query("select o from Operation o where (o.capacite='VOIE+CAT' OR o.capacite='CAT')")
 	public List<Operation> findOperaCat();
 	
-	@Query(value = "select lib_act,struc_resp,rptx,pk_debut,pk_fin,ttx,conducteur,zep,com,date_debut,date_fin from operation left outer join rptx " + 
+	@Query(value = "select lib_act,struc_resp,rptx,pk_debut,pk_fin,ttx,conducteur,zep,com,date_debut,date_fin,libelle_voie from operation left outer join rptx " + 
 			"	on operation.opid = rptx.id_activites" + 
 			"	left outer join trains_travaux" + 
 			"	on  operation.opid = trains_travaux.id_activites" + 

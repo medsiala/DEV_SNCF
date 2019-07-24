@@ -12,6 +12,7 @@ import org.sid.entities.OperationCat;
 import org.sid.entities.OperationZep;
 import org.sid.entities.RPTX;
 import org.sid.entities.TrainsTravaux;
+import org.sid.entities.Zep;
 
 
 public class GenererOper {
@@ -208,6 +209,9 @@ public class GenererOper {
 				Date dateFin=((Date)tab[10]);
 				interfaceTable.setDatFin(dateFin);
 				
+				String voie=((String)tab[11]);
+				interfaceTable.setVoie(voie);
+				
 				interfaceTables.add(interfaceTable);
 				i++;
 			}
@@ -216,10 +220,27 @@ public class GenererOper {
 			
 
 			}
-	
-			
-			
+		
+		public static List<InterfaceTable> ControleZep(List<InterfaceTable> intTables,List<Zep> zeps) {
+			int i=0;
+			while(i<intTables.size()) {
+		    InterfaceTable intTable=intTables.get(i);
+		    	intTable.setControlZep(0);
+		    	for (Zep zep:zeps) {
+		    		
+		    		if(zep.getZep().equals(intTable.getZep())&&(zep.getPkdebut()==intTable.getPkDebutZch())&&(zep.getPkfin()==intTable.getPkFinZch())){
+		    			System.out.println(intTable.getZep());
+		    			intTable.setControlZep(1);
+		    			System.out.println(intTable.getControlZep());
+		    			
+		    			}
+		    	}
+		    	
+		    	i++;
+			}
+		    return intTables;
 		}
+	}
 	
 		
 		

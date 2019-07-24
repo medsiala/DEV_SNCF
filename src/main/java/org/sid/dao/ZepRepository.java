@@ -16,4 +16,5 @@ public interface ZepRepository extends JpaRepository<Zep, Long> {
 	void deleteImport(String emplacement);
 	@Query("select zep,pkdebut,pkfin from Zep z WHERE (z.pkdebut<= ?1 AND z.pkfin>=?1 AND z.pkdebut<= ?2 AND z.pkfin>= ?2 AND z.ligneA= ?3)  ")
 	public List<Object[]> findZEp(double pkdebut,double pkfin,double ligneA);
+	
 } 

@@ -19,6 +19,7 @@ public class UploadFileControllerCat {
 		try {
 			catServices.storeCat(file);
 			model.addAttribute("messageC", "Importation réussie");
+			catServices.selectSecCat();
 		} catch (Exception e) {
 			model.addAttribute("messageC", "Importation Échouée ! -> Nom du fichier: " + file.getOriginalFilename());
 		}

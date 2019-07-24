@@ -81,7 +81,8 @@ public class FileLaplacePlanDeChargeServices {
     		// Save Customers to DataBase
 			System.out.println("Save Customers to DataBase");
     		laplacePlanDeChargeRepository.saveAll(listLaplacePlanDeCharges);
-    		
+    		 
+    		 selectact();
   
         } catch (IOException e) {
         	throw new RuntimeException("FAIL! -> message = " + e.getMessage());
@@ -100,7 +101,6 @@ public class FileLaplacePlanDeChargeServices {
 	}
 	public void selectact(){ 	
 		deletOperation();
-		
 		List<Object[]> lap =laplacePlanDeChargeRepository.findLAplaceChargesByidActivites();
 		List<Operation> ops= GenererOper.SaveOper(lap);
 		operationRepository.saveAll(ops);

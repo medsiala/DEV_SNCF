@@ -10,6 +10,7 @@ import org.sid.dao.ZepRepository;
 import org.sid.entities.InterfaceTable;
 import org.sid.entities.OperationZep;
 import org.sid.entities.Zep;
+import org.sid.services.ControleService;
 import org.sid.services.FileLaplacePlanDeChargeServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,6 +39,8 @@ public class TableauProgController {
 	ZepRepository zepRepository;
 	@Autowired 
 	OperaZepRepository operaZepRepository;
+	@Autowired
+	ControleService controleService;
 	
 	public TableauProgController(OperationRepository operationReposotory) {
 		super();
@@ -82,6 +85,12 @@ public class TableauProgController {
 	public Iterable<OperationZep> getOpZep(){
 		return operaZepRepository.findAll();
 	}
-	
-	
+	@GetMapping("/ZepControl{dateNuit}")
+	public Iterable<InterfaceTable> InterfaceTable(@RequestParam Date dateNuit) {
+		List<InterfaceTable> interfaceTables;
+		interfaceTables=controleService.ZepControl(dateNuit);
+		return interfaceTables;
 	}
+	}
+	
+	
