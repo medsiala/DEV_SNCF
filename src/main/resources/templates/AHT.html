@@ -189,7 +189,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                 <div class="card-body">
              <form action="genererAht{date}" method="get">
 					  <div>
-					    <label for="date">Choisissez la date de la nuit</label>
+					    <label for="date">Choisissez la nuit </label>
 					    <input type="date" name="date">
 					    <div th:if="${msg}">
 					<span class=vert th:text="${msg}"/>
@@ -199,7 +199,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 					  </div>
   				
 						<div>
-						<button class="btn btn-primary btn-user btn-block">Enregistrer </button>
+						<button class="btn btn-primary btn-user btn-block">Valider  </button>
 						 </div>
 						</form>
                 
@@ -229,6 +229,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
               
 
             </div>
+            
 
             <div class="col-lg-6">
 
@@ -238,17 +239,35 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     <span class="icon text-white-50">
                       <i class="fas fa-cloud-upload-alt"></i>
                     </span>
-                    <span class="text">Créer l'AHT</span>
+                    <span class="text">Modifier l'AHT</span>
                   </a>
                 </div>
                 <div class="card-body">
                
                   The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!
                 </div>
+                 </div>
+                <div class="col-lg-6">
+
+               <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <a href="http://localhost:3000/ExportExcel" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-cloud-upload-alt"></i>
+                    </span>
+                    <span class="text">Exporter l'AHT</span>
+                  </a>
+                </div>
+                <div class="card-body">
+               
+                 <input type="date" >&nbsp;&nbsp;
+                </div>
+              </div>
               </div>
              
 
             </div>
+            
 
           </div>
 

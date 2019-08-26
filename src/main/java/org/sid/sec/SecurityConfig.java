@@ -33,6 +33,7 @@ protected void configure(AuthenticationManagerBuilder auth,DataSource dataSource
     .antMatchers("/index").hasRole("ADMIN")
     .antMatchers("/upload").hasRole("ADMIN")
     .antMatchers("/nouveauUtilisateur").hasRole("ADMIN")
+    .antMatchers("/ExportExcel").hasRole("ADMIN")
    
     
     .and()

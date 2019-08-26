@@ -225,10 +225,10 @@ public class GenererOper {
 			int i=0;
 			while(i<intTables.size()) {
 		    InterfaceTable intTable=intTables.get(i);
-		    	intTable.setControlZep(0);
+		    intTable.setControlZep(0);
 		    	for (Zep zep:zeps) {
 		    		
-		    		if(zep.getZep().equals(intTable.getZep())&&(zep.getPkdebut()==intTable.getPkDebutZch())&&(zep.getPkfin()==intTable.getPkFinZch())){
+		    		if((zep.getZep().equals(intTable.getZep()))&&(zep.getPkdebut()==intTable.getPkDebutZch())&&(zep.getPkfin()==intTable.getPkFinZch())){
 		    			System.out.println(intTable.getZep());
 		    			intTable.setControlZep(1);
 		    			System.out.println(intTable.getControlZep());

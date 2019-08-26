@@ -43,7 +43,7 @@ public class InterfaceTable implements Serializable {
 	private String aa;
 	private double pkDebutAa ;
 	private double pkFinAa ;
-	private Long NopCat ;
+	private String NopCat ;
 	@Column(length = 1024)
 	private String CSecteurs;
 	private String trainEncDebutCat;
@@ -192,10 +192,10 @@ public class InterfaceTable implements Serializable {
 	public void setPkFinAa(double pkFinAa) {
 		this.pkFinAa = pkFinAa;
 	}
-	public Long getNopCat() {
+	public String getNopCat() {
 		return NopCat;
 	}
-	public void setNopCat(Long nopCat) {
+	public void setNopCat(String nopCat) {
 		NopCat = nopCat;
 	}
 	public String getCSecteurs() {
@@ -334,7 +334,7 @@ public class InterfaceTable implements Serializable {
 	public InterfaceTable(Long id, Long idTri, Long nop, String zep, String voie, String trainEncDebut, String hDebut,
 			String trainEncFin, String hFin, String rptx, String natureTravaux, String cch, double pkDebutZch,
 			double pkFinZch, String bouclage, String natureTravauxAa, String aa, double pkDebutAa, double pkFinAa,
-			Long nopCat, String cSecteurs, String trainEncDebutCat, String hDebutCat, String trainEncFinCat,
+			String nopCat, String cSecteurs, String trainEncDebutCat, String hDebutCat, String trainEncFinCat,
 			String hFinCAt, String ttx, String degarage, String garage, String creq, String consIs, String ctx,
 			String com, double ligne, String strucResp, String zepProp, Date dateDebut, Date datFin, Date dateNuit,
 			int editId, int controlZep) {
